@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>product Detail</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #771d77;
+        }
+        .product-detail {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .product-detail img {
+            max-width: 300px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        .product-info {
+            width: 100%;
+            text-align: center;
+        }
+        .product-info h2 {
+            color: #771d77;
+        }
+        .product-info p {
+            color: #555;
+            margin: 10px 0;
+        }
+        .product-info .price {
+            color: #28a745;
+            font-size: 1.5em;
+            margin: 20px 0;
+        }
+        .product-details {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-top: 1px solid #ddd;
+            width: 100%;
+        }
+        .product-details h3 {
+            margin: 0;
+            color: #771d77;
+            margin-bottom: 10px;
+        }
+        .product-details p {
+            color: #555;
+        }
+        .product-video {
+            margin: 20px 0;
+            width: 100%;
+            max-width: 600px;
+        }
+        .product-description {
+            margin-top: 20px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Product Detail</h1>
+        <div class="product-detail">
+            <img src="{{ d.image.url }}" alt="product Image">
+            <div class="product-info">
+                <h2>product Name: {{ d.product_name }}</h2>
+            </div>
+
+            </div>
+            <div class="product-details">
+                <h3>product Details</h3>
+                <p><strong>Agri Agency:</strong> {{ d.agriagencyid.name }}</p>
+                <p><strong>Description:</strong> {{ d.product_description }}</p>
+                <p><strong>Price:</strong>{{d.product_price}}</p>
+            </div>
+            <div class="product-description">
+        </div>
+    </div>
+</body>
+</html>

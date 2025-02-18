@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Purchased products</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa; /* Light gray background */
+            color: #333; /* Dark text color */
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #2d175f; /* Primary color */
+            color: white; /* White text */
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .container {
+            max-width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff; /* White background */
+            border: 1px solid #ddd; /* Light gray border */
+            box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Box shadow */
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee; /* Light gray line between items */
+            padding-bottom: 20px;
+        }
+        h1 {
+            color: #771d77; /* Primary color */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        h2{
+            text-align: center;
+            color: #771d77; 
+
+        }
+        h3 {
+            color: #333; /* Dark text color */
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        p {
+            color: #666; /* Medium gray text */
+            margin-bottom: 15px;
+        }
+        image {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Purchased Product</h1>
+    </header>
+    <h2>MY Product</h2>
+    <div class="container">
+       
+        <ul>
+            {% for product in my_order %}
+            <li>
+                <img src="{{ product.productid.image.url }}" class="image" alt="product 1" height="200px" width="200px">
+                <h3>Product:{{ product.productid.product_name }}</h3>
+                <h3>Description: {{ product.productid.product_description }}</h3>
+                <h3>Price: {{ product.totalprice }}</h3>
+                <!-- Add link to product video or embed video here -->
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,903 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/carousel/">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+
+  <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+    crossorigin="anonymous"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+    }
+
+    .banner {
+      width: 100%;
+      height: 100vh;
+      /* background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(course3.jpg); */
+      background-color: rgb(246, 249, 250);
+      background-size: cover;
+      background-position: center;
+    }
+
+    .navbar {
+      width: 95%;
+      margin: auto;
+      padding: 35px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-left: 80px;
+
+    }
+
+    ul {
+      background-color: #2d175f;
+      width: 90%;
+      margin-right: 50px;
+    }
+
+    .navbar ul li {
+      list-style: none;
+      display: inline-block;
+      margin: 0 20px;
+      position: relative;
+    }
+
+    .navbar ul li a {
+      text-decoration: none;
+      color: rgba(243, 238, 241, 0.945);;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
+    .navbar ul li::after {
+      content: '';
+      height: 3px;
+      width: 0;
+      background: #eeeb33cc;
+      position: absolute;
+      left: 0;
+      bottom: -10px;
+      transition: 0.5s;
+    }
+
+    .navbar ul li:hover::after {
+      width: 100%;
+    }
+
+    button {
+      width: 80px;
+      padding: 10px 0;
+      text-align: center;
+      margin: 10px 5px;
+      border-radius: 25px;
+      font-weight: bold;
+      border: 1px solid rgb(111, 220, 247);
+      background: transparent;
+      color: rgb(250, 245, 248);
+      cursor: pointer;
+    }
+
+    .corbutton {
+      color: black;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: rbg(173,216,230);
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(34, 26, 26, 0.87);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: rgba(0, 0, 0, 0.863);
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    #slider {
+      overflow: hidden;
+      height: 450px;
+      width: 80%;
+      margin-left: 125px;
+
+    }
+
+    @keyframes slider {
+      0% {
+        left: 0;
+      }
+
+      30% {
+        left: 0;
+      }
+
+      33% {
+        left: -100%;
+      }
+
+      63% {
+        left: -100%;
+      }
+
+      66% {
+        left: -200%;
+      }
+
+      95% {
+        left: -200%;
+      }
+
+      100% {
+        left: 0;
+      }
+    }
+
+    #slider figure {
+      width: 300%;
+      position: relative;
+      animation: 4s slider infinite;
+      justify-content: center;
+      background-size: cover;
+    }
+
+    #slider figure:hover {
+      /*animation-play-state: paused; enable for pause on hover*/
+    }
+
+    #slider figure img {
+      width: 33.333333333%;
+      height: 100%;
+      float: left;
+    }
+
+    .slider-container {
+      width: 100%;
+      overflow: hidden;
+
+    
+    }
+
+    .card-slider {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 20px;
+      /* Adjust as needed */
+    }
+
+    .card {
+      flex: 0 0 auto;
+      width: 300px;
+      /* Adjust card width as needed */
+      margin-right: 20px;
+      /* Space between cards */
+      
+
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      background-color: white;
+    }
+
+    .card-image {
+      text-align: center;
+      padding: 1px 0;
+    }
+
+    .card-image img {
+      width: 100px;
+      height: 100px;
+      
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .card-content h3 {
+      margin: 0 0 10px;
+    }
+
+    .card-content p {
+      margin: 0;
+    }
+
+    .card-slider {
+      display: flex;
+      transition: transform 0.5s ease;
+      flex-wrap: nowrap;
+    }
+
+    .card {
+      flex: 0 0 auto;
+      margin-right: 20px;
+    }
+
+    .slider-container {
+      overflow: hidden;
+      cursor: pointer;
+      /* Add cursor pointer */
+    }
+
+
+    #slider .figure img {
+      /* height: 400px;
+  width: 100%; */
+      object-fit: contain;
+    }
+
+    /*=============== GOOGLE FONTS ===============*/
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+
+    /*=============== VARIABLES CSS ===============*/
+    :root {
+      /*========== Colors ==========*/
+      /*Color mode HSL(hue, saturation, lightness)*/
+      --first-color: hsl(82, 57%, 38%);
+      --title-color: hsl(0, 63%, 56%);
+      --text-color: hsl(0, 63%, 56%);
+      --body-color: hsl(189, 64%, 98%);
+      --container-color: hsl(0, 50%, 98%);
+
+      /*========== Font and typography ==========*/
+      /*.5rem = 8px | 1rem = 16px ...*/
+      --body-font: "Poppins", sans-serif;
+      --h2-font-size: 1.25rem;
+      --small-font-size: .813rem;
+    }
+
+    /*========== Responsive typography ==========*/
+    @media screen and (min-width: 1120px) {
+      :root {
+        --h2-font-size: 1.5rem;
+        --small-font-size: .875rem;
+      }
+    }
+
+    /*=============== BASE ===============*/
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      font-family: var(--body-font);
+      background-color: var(--body-color);
+      color: var(--text-color);
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    /*=============== CARD ===============*/
+    .container {
+      display: grid;
+      place-items: center;
+      margin-inline: 1.5rem;
+      padding-block: 3.5rem;
+      margin-top: -50px;
+      
+    }
+
+    .card__container {
+      display: grid;
+      row-gap: 8.5rem;
+      margin-left: 120px;
+      height: 250px;
+      width: 600px;
+    }
+
+    .card__article {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card__img {
+      width: 328px;
+      border-radius: 1.5rem;
+      border-color: #5a303a;
+      border-style: solid;
+      border-width: medium;
+
+    }
+
+    .card__data {
+      width: 280px;
+      background-color: var(--container-color);
+      padding: 1.5rem 2rem;
+      box-shadow: 0 8px 24px hsla(0, 0%, 0%, .15);
+      border-radius: 1rem;
+      position: absolute;
+      bottom: -9rem;
+      left: 0;
+      right: 0;
+      margin-inline: auto;
+      opacity: 0;
+      transition: opacity 1s 1s;
+    }
+
+    .card__description {
+      display: block;
+      font-size: var(--small-font-size);
+      margin-bottom: .25rem;
+    }
+
+    .card__title {
+      font-size: var(--h2-font-size);
+      font-weight: 500;
+      color: var(--title-color);
+      margin-bottom: .75rem;
+    }
+
+    .card__button {
+      text-decoration: none;
+      font-size: var(--small-font-size);
+      font-weight: 500;
+      color: var(--first-color);
+    }
+
+    .card__button:hover {
+      text-decoration: underline;
+    }
+
+    /* Naming animations in hover */
+    .card__article:hover .card__data {
+      animation: show-data 1s forwards;
+      opacity: 1;
+      transition: opacity .3s;
+    }
+
+    .card__article:hover {
+      animation: remove-overflow 2s forwards;
+    }
+
+    .card__article:not(:hover) {
+      animation: show-overflow 2s forwards;
+    }
+
+    .card__article:not(:hover) .card__data {
+      animation: remove-data 1s forwards;
+    }
+
+    /* Card animation */
+    @keyframes show-data {
+      50% {
+        transform: translateY(-10rem);
+      }
+
+      100% {
+        transform: translateY(-7rem);
+      }
+    }
+
+    @keyframes remove-overflow {
+      to {
+        overflow: initial;
+      }
+    }
+
+    @keyframes remove-data {
+      0% {
+        transform: translateY(-7rem);
+      }
+
+      50% {
+        transform: translateY(-10rem);
+      }
+
+      100% {
+        transform: translateY(.5rem);
+      }
+    }
+
+    @keyframes show-overflow {
+      0% {
+        overflow: initial;
+        pointer-events: none;
+      }
+
+      50% {
+        overflow: hidden;
+      }
+    }
+
+    /*=============== BREAKPOINTS ===============*/
+    /* For small devices */
+    @media screen and (max-width: 340px) {
+      .container {
+        margin-inline: 1rem;
+      }
+
+      .card__data {
+        width: 250px;
+        padding: 1rem;
+      }
+    }
+
+    /* For medium devices */
+    @media screen and (min-width: 768px) {
+      .card__container {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 1.5rem;
+      }
+    }
+
+    /* For large devices */
+    @media screen and (min-width: 1120px) {
+      .container {
+        height: 80vh;
+      }
+
+      .card__container {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .card__img {
+        width: 348px;
+      }
+
+      .card__data {
+        width: 316px;
+        padding-inline: 2.5rem;
+      }
+    }
+
+    .image__info {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      margin-top: 60PX;
+      color: #79fcab;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.164);
+      /* Semi-transparent background */
+      opacity: 1;
+      /* Initially visible */
+      transition: opacity 0.5s ease-in-out;
+      /* Smooth transition */
+    }
+
+    .card__article:hover .image__info {
+      opacity: 0;
+      /* Hide image info on hover */
+    }
+
+    .card__article:hover .card__data {
+      opacity: 1;
+      /* Show card data on hover */
+    }
+
+    .card__img {
+      width: 100%;
+      /* Adjust image size */
+      border-radius: 1.5rem;
+      object-fit: cover;
+      height: 100%;
+    }
+
+    .card__data {
+      /* Your existing styles */
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 1.5rem 2rem;
+      box-shadow: 0 8px 24px hsla(0, 0%, 0%, .15);
+      border-radius: 1rem;
+      background-color: var(--container-color);
+      opacity: 0;
+      /* Initially hidden */
+      transition: opacity 0.5s ease-in-out;
+      /* Smooth transition */
+    }
+   
+.footer_area {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    webkit-box-shadow: 0 8px 48px 8px rgba(47, 91, 234, 0.175);
+    box-shadow: 0 8px 48px 8px rgba(47, 91, 234, 0.175);
+    padding:60px;
+}
+.footer_area .row {
+    margin-left: -25px;
+    margin-right: -25px;
+}
+.footer_area .row .col,
+.footer_area .row .col-1,
+.footer_area .row .col-10,
+.footer_area .row .col-11,
+.footer_area .row .col-12,
+.footer_area .row .col-2,
+.footer_area .row .col-3,
+.footer_area .row .col-4,
+.footer_area .row .col-5,
+.footer_area .row .col-6,
+.footer_area .row .col-7,
+.footer_area .row .col-8,
+.footer_area .row .col-9,
+.footer_area .row .col-auto,
+.footer_area .row .col-lg,
+.footer_area .row .col-lg-1,
+.footer_area .row .col-lg-10,
+.footer_area .row .col-lg-11,
+.footer_area .row .col-lg-12,
+.footer_area .row .col-lg-2,
+.footer_area .row .col-lg-3,
+.footer_area .row .col-lg-4,
+.footer_area .row .col-lg-5,
+.footer_area .row .col-lg-6,
+.footer_area .row .col-lg-7,
+.footer_area .row .col-lg-8,
+.footer_area .row .col-lg-9,
+.footer_area .row .col-lg-auto,
+.footer_area .row .col-md,
+.footer_area .row .col-md-1,
+.footer_area .row .col-md-10,
+.footer_area .row .col-md-11,
+.footer_area .row .col-md-12,
+.footer_area .row .col-md-2,
+.footer_area .row .col-md-3,
+.footer_area .row .col-md-4,
+.footer_area .row .col-md-5,
+.footer_area .row .col-md-6,
+.footer_area .row .col-md-7,
+.footer_area .row .col-md-8,
+.footer_area .row .col-md-9,
+.footer_area .row .col-md-auto,
+.footer_area .row .col-sm,
+.footer_area .row .col-sm-1,
+.footer_area .row .col-sm-10,
+.footer_area .row .col-sm-11,
+.footer_area .row .col-sm-12,
+.footer_area .row .col-sm-2,
+.footer_area .row .col-sm-3,
+.footer_area .row .col-sm-4,
+.footer_area .row .col-sm-5,
+.footer_area .row .col-sm-6,
+.footer_area .row .col-sm-7,
+.footer_area .row .col-sm-8,
+.footer_area .row .col-sm-9,
+.footer_area .row .col-sm-auto,
+.footer_area .row .col-xl,
+.footer_area .row .col-xl-1,
+.footer_area .row .col-xl-10,
+.footer_area .row .col-xl-11,
+.footer_area .row .col-xl-12,
+.footer_area .row .col-xl-2,
+.footer_area .row .col-xl-3,
+.footer_area .row .col-xl-4,
+.footer_area .row .col-xl-5,
+.footer_area .row .col-xl-6,
+.footer_area .row .col-xl-7,
+.footer_area .row .col-xl-8,
+.footer_area .row .col-xl-9,
+.footer_area .row .col-xl-auto {
+    padding-right: 25px;
+    padding-left: 25px;
+}
+
+.single-footer-widget {
+    position: relative;
+    z-index: 1;
+}
+.single-footer-widget .copywrite-text a {
+    color: #747794;
+    font-size: 1rem;
+}
+.single-footer-widget .copywrite-text a:hover,
+.single-footer-widget .copywrite-text a:focus {
+    color: #771d8d;
+}
+.single-footer-widget .widget-title {
+    margin-bottom: 1.5rem;
+}
+.single-footer-widget .footer_menu li a {
+    color: #747794;
+    margin-bottom: 1rem;
+    display: block;
+    font-size: 1rem;
+}
+.single-footer-widget .footer_menu li a:hover,
+.single-footer-widget .footer_menu li a:focus {
+    color: #771d8d;
+}
+.single-footer-widget .footer_menu li:last-child a {
+    margin-bottom: 0;
+}
+
+.footer_social_area {
+    position: relative;
+    z-index: 1;
+}
+.footer_social_area a {
+    border-radius: 50%;
+    height: 40px;
+    text-align: center;
+    width: 40px;
+    display: inline-block;
+    background-color:#3b1d8d;
+    line-height: 40px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    margin-right: 10px;
+}
+.footer_social_area a i {
+    line-height: 36px;
+}
+.footer_social_area a:hover,
+.footer_social_area a:focus {
+    color: #ffffff;
+}
+
+@-webkit-keyframes bi-cycle {
+    0% {
+        left: 0;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+@keyframes bi-cycle {
+    0% {
+        left: 0;
+    }
+    100% {
+        left: 100%;
+    }
+}
+ol li, ul li {
+    list-style: none;
+    
+}
+
+ol, ul {
+    margin: 0;
+    padding: 0;
+}
+  </style>
+</head>
+
+<body>
+  {%block content%}
+  <div class="banner">
+    <div class="navbar">
+      <!-- welcome : {{ session }} -->
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="{% url 'productview' %}">Product</a></li>
+        
+        <li><a href="{% url 'about/' %}">Abount us</a></li>
+        <li class="dropdown">
+          <a href="#">Agri Supplier</a>
+          <div class="dropdown-content">
+            
+            <a href="{% url 'agriregister' %}">Register to become Agri supplier</a>
+            <a href="{% url 'agrilogin' %}">Agri supplier Login</a>
+            
+          </div>
+        </li>
+
+        <!-- <li><a href="#"><button type="submit">Login</button></a></li> -->
+        <li><button type="submit"> <a href="{% url 'login' %}">Login</a></button></li>
+
+        <li><a href="{% url 'register' %}"><button type="submit">Sign Up</button></a></li>
+        <li><a href="{% url 'my_order' %}">My Product</a></li>
+        
+        
+
+
+      </ul>
+
+    </div>
+    <div id="slider" style="position: absolute;">
+      <figure class="figure">
+        <img src="{% static 'f2.jpg' %}" style="object-fit: cover; height: 600px;">
+        <img src="{% static 'f4.jpg' %}" style="object-fit: cover;  height: 600px;">
+        <img src="{% static 'f1.1.jpg' %}" style="object-fit: cover; height: 600px; ">
+      </figure>
+    </div>
+  </div>
+  <br><br>
+  
+  <section>
+    <div class="slider-container" style="width: 100%;  padding: 10px 20px; margin-top: -50px; overflow: hidden;  ">
+      <div class="row">
+        <h2 style="margin-left: 20px; font-weight: 800; font-family: Roboto Slab, serif; color: #771d8d;">Expert agricultural solutions with years of experience, empowering you to cultivate success and sustainability...</h2>
+        <h3 style="margin-left: 20px; font-weight: 500; font-family: Roboto Slab, serif; color: #771d8d;">Shop by Brands</h3>
+        
+
+  <h2 style="margin-left: 20px; font-weight: 800; font-family: Roboto Slab, serif; color: #771d8d;"></h2>
+  <div class="container">
+    <div class="card__container">
+      <article class="card__article">
+        <img src="{% static 'iffco.png' %}" alt="image" class="card__img">
+        <div class="image__info">
+          <!-- <span class="location">The Great Path</span> -->
+          <h3 class="image__title"></h3>
+        </div>
+        <div class="card__data">
+          <span class="card__description"><a href="{% url 'productview' %}">The IFFCO Agriproducts Here</a></span>
+          
+        </div>
+      </article>
+
+      <article class="card__article">
+        <img src="{% static 'corteva.png' %}" alt="image" class="card__img">
+        <div class="image__info">
+          <!-- <span class="location">The Great Path</span> -->
+          <h3 class="image__title"></h3>
+        </div>
+        <div class="card__data">
+          <span class="card__description"><a href="{% url 'productview' %}">The Corteva Agriproducts Here</a></span>
+          
+        </div>
+      </article>
+
+      <article class="card__article">
+        <img src="{% static 'aries.jpeg' %}" alt="image" class="card__img">
+        <div class="image__info">
+          <!-- <span class="location">The Great Path</span> -->
+          <h3 class="image__title"></h3>
+        </div>
+        <div class="card__data">
+          <span class="card__description"><a href="{% url 'productview' %}">The Aries Agriproducts Here</a></span>
+          
+        </div>
+      </article>
+      <article class="card__article">
+        <img src="{% static 'crystal.png' %}" alt="image" class="card__img">
+        <div class="image__info">
+          <!-- <span class="location">The Great Path</span> -->
+          <h3 class="image__title"></h3>
+        </div>
+        <div class="card__data">
+          <span class="card__description"><a href="{% url 'productview' %}">The Crystal Agriproducts Here</a></span>
+          
+        </div>
+        
+      </article>
+      <article class="card__article">
+        <img src="{% static 'adma.jpg' %}" alt="image" class="card__img">
+        <div class="image__info">
+          <!-- <span class="location">The Great Path</span> -->
+          <h3 class="image__title"></h3>
+        </div>
+        <div class="card__data">
+          <span class="card__description"><a href="{% url 'productview' %}">The Adma Agriproducts Here</a></span>
+          
+        </div>
+        
+      </article>
+      <article class="card__article">
+        <img src="{% static 'van.png' %}" alt="image" class="card__img">
+        <div class="image__info">
+          <!-- <span class="location">The Great Path</span> -->
+          <h3 class="image__title"></h3>
+        </div>
+        <div class="card__data">
+          <span class="card__description"><a href="{% url 'productview' %}">The Van Iperan Agriproducts Here</a></span>
+          
+        </div>
+        
+      </article>
+    </div>
+  </div>
+
+  <!-- About 1 - Bootstrap Brain Component -->
+<section class="py-3 py-md-5">
+  <div class="container" style="margin-top: -100px;">
+    <div class="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">
+      <div class="col-12 col-lg-6 col-xl-5">
+        <img class="img-fluid rounded" loading="lazy" src="{% static 'i1.jpg' %}" alt="About 1">
+      </div>
+      <div class="col-12 col-lg-6 col-xl-7">
+        <div class="row justify-content-xl-center">
+          <div class="col-12 col-xl-11">
+            <!-- <h2 class="mb-3">Who Are We?</h2> -->
+            <h3 style="font-family: sans-serif; color: black; font-weight: bold; ">
+              At Agrikit, we offer excellent and affordable products, ensuring your agricultural needs are perfectly met with high-quality products and trusted suppliers.</h3>
+            <p class="mb-5" style="font-family: sans-serif; color: rgb(128, 128, 128);">
+              Our Mission is to “Empowering Agriculture!” We believe in nurturing growth, creating seamless solutions, spreading sustainability, and leaving farmers and consumers with products and services that stand the test of time.</p>
+              <div class="row gy-4 gy-md-0 gx-xxl-5X">
+                <div class="col-12 col-md-6">
+                  <div class="d-flex">
+                    <div class="me-4 text-primary">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-laptop" viewBox="0 0 16 16">
+                        <path d=""/>
+                      </svg>
+                    </div>
+                    <div>
+                      <h2 class="h4 mb-3" style="color: black;">Great Value for Money</h2>
+                      <p class="text-secondary mb-0">Your Path to Agricultural Excellence with our quality products and affordable solutions!</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <div class="d-flex">
+                    <div class="me-4 text-primary">
+                      <svg xmlns="{% static 'logo.png' %}" width="32" height="32" fill="currentColor" class="bi bi-lightbulb" viewBox="0 0 16 16">
+                        <path d=" "/>
+                      </svg>
+                    </div>
+                    <div>
+                      <h2 class="h4 mb-3" style="color: black;">24*7 Availablity</h2>
+                      <p class="text-secondary mb-0">We are here round the clock to support your agricultural needs, anytime you need us!</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<br>
+<!-- Remove the container if you want to extend the Footer to full width. -->
+
+
+
+<!-- End of .container -->
+
+  </main>
+  <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+  {% endblock %}
+  
+</body>
+
+</html>

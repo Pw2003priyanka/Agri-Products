@@ -1,0 +1,425 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+	<link
+	href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+	rel="stylesheet"
+  />
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* background: linear-gradient(90deg, white, white); */
+        }
+
+        .container {
+	position: relative;
+	height: 70vh;
+	width: 350px;
+    justify-content: center;
+	margin-top: 60px;
+	
+	box-shadow: 0px 0px 20px #5C5696;
+	background: linear-gradient(90deg, #2d175f, #2d175f);
+}
+
+.container1 {
+	background: linear-gradient(90deg, #C7C5F4, #2d175f);
+	height: 70px;
+	display: flex;
+	
+	
+}
+
+.container2 {
+	background-color: #dedde0;
+	border-top-left-radius: 34px;
+	border-top-right-radius: 34px;
+	height: 10%;
+
+}
+
+.container3 {
+	background-color: #dedde0;
+	height: 90%;
+	
+
+}
+
+.arrow {
+	margin-top: 18px;
+	color: white;
+	font-size: 30px;
+}
+
+h2 {
+	font-size: 20px;
+	color: white;
+	margin-left: 15px;
+}
+
+.contain {
+	display: flex;
+	align-items: center;
+	margin-bottom: 20px;
+	
+}
+
+.pro-img img {
+	width: 110px;
+	height: 110px;
+	border-radius: 50%;
+	overflow: hidden;
+	margin-right: 20px;
+	border: 3px solid #2d175f;
+	margin-top: -75px;
+	margin-left: 120px;
+	margin-bottom: 10px;
+}
+
+.for {
+	width: calc(100% - 110px - 20px);
+	border-radius: 50px;
+	border: 1px solid #ccc;
+	outline: none;
+	margin-bottom: 80px;
+}
+
+.for input {
+	width: calc(100% - 20px);
+}
+
+.edit {
+	margin-right: 0;
+	color: white;
+	margin-left: 178px;
+	font-size: 22px;
+	margin-top: 11px;
+}
+
+.form {
+	margin-left: 25px;
+	margin-top: -25px;
+	justify-content: center;
+	text-align: center;
+	margin-bottom: 50px
+}
+
+.form-group {
+	position: relative;
+	margin-bottom: 20px;
+	
+}
+
+.info {
+	width: 80%;
+	padding: 10px;
+	margin-right: 20px;
+	border-radius: 50px;
+	border: 1px solid #ccc;
+	outline: none;
+}
+
+input:focus {
+	border-color: #2d175f;
+}
+
+.btn {
+	display: inline-block;
+	font-weight: 400;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	cursor: pointer;
+	user-select: none;
+	width: 75%;
+	border: 1px solid transparent;
+	padding: .375rem .75rem;
+	font-size: 1rem;
+	line-height: 1.5;
+	border-radius: .25rem;
+	color: #fff;
+	margin-right: 10px;
+}
+
+.btn-primary {
+	background-color:  #2d175f;
+}
+
+.btn-primary:hover {
+	background-color: #2d175f;
+	border-color: #2d175f;
+}
+
+.btn-md {
+	padding: 0.45rem 0.85rem;
+}
+
+.camera-icon {
+	position: absolute;
+	margin-right: 80px;
+	margin-top: -35px;
+	margin-left: 80px;
+	/* background-color: #fff; */
+	border-radius: 50%;
+	padding-right: 5px;
+	padding-left: 5px;
+	padding-top: 5px;
+	padding-bottom: 2px;
+}
+
+.camera-icon i {
+	color: #555;
+}
+
+.btn-rounded {
+	border-radius: 10px;
+}
+
+.in {
+	width: 80%;
+	padding: 10px;
+	margin-right: 20px;
+	border-radius: 50px;
+	border: 1px solid #ccc;
+	outline: none;
+}
+
+.in1 {
+	width: 90%;
+	padding: 10px;
+	margin-right: 20px;
+	border-radius: 50px;
+	border: 1px solid #ccc;
+	outline: none;
+}
+
+     /* Google Fonts - Poppins */
+	 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  min-height: 100%;
+  background: #e3f2fd;
+}
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 70px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+}
+nav .logo {
+  display: flex;
+  align-items: center;
+  margin: 0 24px;
+}
+.logo .menu-icon {
+  color: #333;
+  font-size: 24px;
+  margin-right: 14px;
+  cursor: pointer;
+}
+.logo .logo-name {
+  color: #333;
+  font-size: 22px;
+  font-weight: 500;
+}
+nav .sidebar {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  height: 100%;
+  width: 260px;
+  padding: 20px 0;
+  background-color: #fff;
+  box-shadow: 0 5px 1px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+}
+nav.open .sidebar {
+  left: 0;
+}
+.sidebar .sidebar-content {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px 16px;
+}
+.sidebar-content .list {
+  list-style: none;
+}
+.list .nav-link {
+  display: flex;
+  align-items: center;
+  margin: 8px 0;
+  padding: 14px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+.lists .nav-link:hover {
+  background-color: #2d175f;
+}
+.nav-link .icon {
+  margin-right: 14px;
+  font-size: 20px;
+  color: #707070;
+}
+.nav-link .link {
+  font-size: 16px;
+  color: #707070;
+  font-weight: 400;
+}
+.lists .nav-link:hover .icon,
+.lists .nav-link:hover .link {
+  color: #fff;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  height: 1000vh;
+  width: 200%;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s ease;
+  background: rgba(0, 0, 0, 0.3);
+}
+nav.open ~ .overlay {
+  opacity: 1;
+  left: 260px;
+  pointer-events: auto;
+}
+    </style>
+</head>
+<body>
+	<nav>
+		<div class="logo">
+		  <i class="bx bx-menu menu-icon"></i>
+		  <span class="logo-name">Product</span>
+		</div>
+		<div class="sidebar">
+		  <div class="logo">
+			<i class="bx bx-menu menu-icon"></i>
+			<span class="logo-name">Agrikit</span>
+		  </div>
+		  <div class="sidebar-content">
+			<ul class="lists">
+			 
+			  <li class="list">
+				<a href="#" class="nav-link">
+				  <i class="bx bx-bar-chart-alt-2 icon"></i>
+				  <span class="link"><a href="{% url 'addproduct' %}">Add Product</a></span>
+				</a>
+			  </li>
+			  <li class="list">
+				<a href="#" class="nav-link">
+				  <i class="bx bx-bell icon"></i>
+				  <span class="link"><a href="{% url 'viewproduct' %}">View Product</a></span>
+				</a>
+			  </li>
+			  <li class="list">
+				<a href="#" class="nav-link">
+				  <i class="bx bx-message-rounded icon"></i>
+				  <span class="link"><a href="{% url 'profile' %}"> Profile</a></span>
+				</a>
+			  </li>
+			  <li class="list">
+			
+		q
+			</ul>
+			<div class="bottom-cotent">
+			  <li class="list">
+				<a href="#" class="nav-link">
+				  <i class="bx bx-cog icon"></i>
+				  <span class="link">Settings</span>
+				</a>
+			  </li>
+			  <li class="list">
+				<a href="#" class="nav-link">
+				  <i class="bx bx-log-out icon"></i>
+				  <span class="link">Logout</span>
+				</a>
+			  </li>
+			</div>
+		  </div>
+		</div>
+	  </nav>
+	  <section class="overlay"></section>
+	  
+    <form action="{% url 'agrieditprofile' %}" method="POST">
+        {% csrf_token %}
+    <div class="container">
+        <div class="container1">
+            <ion-icon name="arrow-back" class="arrow" (click)="goToHome2()"></ion-icon>
+    
+            <h2>Edit profile</h2>
+            <ion-icon name="pencil" class="edit"></ion-icon>
+        </div>
+    
+        <div class="container2"></div>
+        <div class="container3">
+    
+          
+    
+            <div class="form">
+				<div class="form-group">
+                    <ion-icon name="call"></ion-icon>
+    
+                    <input type="file" id="image" placeholder="Enter your phone" class="info"  value="" name="image"required>
+                </div>
+                <div class="form-group">
+                    <ion-icon name="person"></ion-icon>
+                    <input type="name" id="name" placeholder="Enter your Fullname" class="info"   value="" name="name" required >
+                </div>
+                <div class="form-group">
+                    <ion-icon name="call"></ion-icon>
+    
+                    <input type="phone" id="phone" placeholder="Enter your phone" class="info"  value="" name="phoneno"required>
+                </div>
+                <div class="form-group">
+                    <ion-icon name="mail"></ion-icon>
+                    <input type="email" id="email" placeholder="Enter your email" class="info"  value="" name="email" required>
+                </div>
+                <div class="form-group">
+                    <ion-icon name="lock-open"></ion-icon>
+                    <input type="text" id="password" placeholder="Enter your Description" class="info"  value="" name="description" required>
+                </div>
+                <button class="m-t-50 waves-effect waves-dark btn btn-primary btn-md btn-rounded" data-abc="true" type="submit">Save</button>
+            </div>
+        </div>
+    </div>
+    </form>
+	
+    <script>
+        const navBar = document.querySelector("nav"),
+           menuBtns = document.querySelectorAll(".menu-icon"),
+           overlay = document.querySelector(".overlay");
+         menuBtns.forEach((menuBtn) => {
+           menuBtn.addEventListener("click", () => {
+             navBar.classList.toggle("open");
+           });
+         });
+         overlay.addEventListener("click", () => {
+           navBar.classList.remove("open");
+         });
+      </script>
+
+</body>
+</html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View Course</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link
+    href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+    rel="stylesheet"
+  />
+    <style>
+  /* Google Fonts - Poppins */
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  min-height: 100%;
+  background: #e3f2fd;
+}
+nav {
+ 
+  top: 0;
+  left: 0;
+  height: 70px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+}
+nav .logo {
+  display: flex;
+  align-items: center;
+  margin: 0 24px;
+}
+.logo .menu-icon {
+  color: #333;
+  font-size: 24px;
+  margin-right: 14px;
+  cursor: pointer;
+}
+.logo .logo-name {
+  color: #333;
+  font-size: 22px;
+  font-weight: 500;
+}
+nav .sidebar {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  height: 100%;
+  width: 260px;
+  padding: 20px 0;
+  background-color: #fff;
+  box-shadow: 0 5px 1px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+}
+nav.open .sidebar {
+  left: 0;
+}
+.sidebar .sidebar-content {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px 16px;
+}
+.sidebar-content .list {
+  list-style: none;
+}
+.list .nav-link {
+  display: flex;
+  align-items: center;
+  margin: 8px 0;
+  padding: 14px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+.lists .nav-link:hover {
+  background-color: #2d175f;
+}
+.nav-link .icon {
+  margin-right: 14px;
+  font-size: 20px;
+  color: #707070;
+}
+.nav-link .link {
+  font-size: 16px;
+  color: #707070;
+  font-weight: 400;
+}
+.lists .nav-link:hover .icon,
+.lists .nav-link:hover .link {
+  color: #fff;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  height: 1000vh;
+  width: 200%;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s ease;
+  background: rgba(0, 0, 0, 0.3);
+}
+nav.open ~ .overlay {
+  opacity: 1;
+  left: 260px;
+  pointer-events: auto;
+}
+  
+
+body {
+            background: #eee;
+        }
+
+        .btn-outline-success {
+            color: #2d175f;
+            border-color: #2d175f;
+        }
+
+        .btn-outline-success:hover {
+            background-color: #0e5d92;
+            color: #fff;
+        }
+        .pacakge-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 2rem 0;
+        }
+
+        .pacakge-item {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 320px;
+            /* Increased width */
+            margin: 1rem;
+            padding: 1.5rem;
+            /* Increased padding */
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .pacakge-item:hover {
+            transform: scale(1.05);
+        }
+
+        .pacakge-item img {
+            max-width: 100%;
+            border-radius: 4px;
+        }
+
+        .pacakge-item h3 {
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+            color: #2d175f;
+        }
+
+        .pacakge-item p {
+            font-size: 1rem;
+            color: #2d175f;
+        }
+
+        .pacakge-item .btn-cart,
+        .pacakge-item .btn-buy {
+            margin: 0.5rem;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .pacakge-item .btn-cart {
+            background-color: #2d175f;
+            color: white;
+        }
+
+        .pacakge-item .btn-buy {
+            background-color: #28a745;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+          <i class="bx bx-menu menu-icon"></i>
+          <span class="logo-name">products</span>
+        </div>
+        <div class="sidebar">
+          <div class="logo">
+            <i class="bx bx-menu menu-icon"></i>
+            <span class="logo-name">Agrikit</span>
+          </div>
+          <div class="sidebar-content">
+            <ul class="lists">
+              <li class="list">
+                <a href="#" class="nav-link">
+                  <i class="bx bx-home-alt icon"></i>
+                  <span class="link">Dashboard</span>
+                </a>
+              </li>
+              <li class="list">
+                <a href="#" class="nav-link">
+                  <i class="bx bx-bar-chart-alt-2 icon"></i>
+                  <span class="link"><a href="{% url 'addproduct' %}">ADD Pacakge</a></span>
+                </a>
+              </li>
+              <li class="list">
+                <a href="#" class="nav-link">
+                  <i class="bx bx-bell icon"></i>
+                  <span class="link"><a href="{% url 'viewproduct' %}">VIEW Pacakge</a></span>
+                </a>
+              </li>
+              <li class="list">
+                <a href="#" class="nav-link">
+                  <i class="bx bx-message-rounded icon"></i>
+                  <span class="link"><a href="{% url 'profile' %}"> PROFILE</a></span>
+                </a>
+              </li>
+              <li class="list">
+                <a href="#" class="nav-link">
+                  <i class="bx bx-pie-chart-alt-2 icon"></i>
+                  <span class="link">Analytics</span>
+                </a>
+              </li>
+              <li class="list">
+                <a href="#" class="nav-link">
+                  <i class="bx bx-heart icon"></i>
+                  <span class="link">Likes</span>
+                </a>
+              </li>
+              <li class="list">
+                <a href="#" class="nav-link">
+                  <i class="bx bx-folder-open icon"></i>
+                  <span class="link">Files</span>
+                </a>
+              </li>
+            </ul>
+            <div class="bottom-cotent">
+              <li class="list">
+                <a href="#" class="nav-link">
+                  <i class="bx bx-cog icon"></i>
+                  <span class="link">Settings</span>
+                </a>
+              </li>
+              <li class="list">
+                <a href="#" class="nav-link">
+                  <i class="bx bx-log-out icon"></i>
+                  <span class="link">Logout</span>
+                </a>
+              </li>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <section class="overlay"></section>
+    <div class="pacakge-list" id="pacakge-list">
+    {% block content %}
+    {% for i in cobj %}
+    <div class="pacakge-item" data-name="product Name 1">
+      <img src="{{ i.image.url }}" alt="product 1" style="height: 50% ;">
+      <h3>{{ i.product_name}}</h3>
+      <p>{{ i.product_description}}</p>
+      <p>{{ i.agriagencyid.name}}</p>
+      <p>Rs: {{ i.product_price }}</p>
+      <p>Status:{{i.status}}</p>
+          <div class="d-flex flex-column mt-3" style="display: flex;">
+              <a href="{% url 'deleteproduct' i.pk %}" class="btn btn-outline-success btn-sm" style="width: 100px;">Delete</a>
+                <form action="{% url 'editproduct' i.pk %}" method="GET">
+                    {% csrf_token %}
+                      <input type="hidden" name="cid" value="{{ i.id }}">
+                      <button class="btn btn-outline-success btn-sm" type="submit" style="width: 100px; margin-left: 110px; margin-top: -55px;">Edit</button>
+                  </form>
+          </div>
+    </div>
+    {% endfor %}
+    {% endblock %}
+    
+    <script>
+        const navBar = document.querySelector("nav"),
+           menuBtns = document.querySelectorAll(".menu-icon"),
+           overlay = document.querySelector(".overlay");
+         menuBtns.forEach((menuBtn) => {
+           menuBtn.addEventListener("click", () => {
+             navBar.classList.toggle("open");
+           });
+         });
+         overlay.addEventListener("click", () => {
+           navBar.classList.remove("open");
+         });
+      </script>
+</body>
+
+</html>

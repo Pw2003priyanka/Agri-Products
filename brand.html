@@ -1,0 +1,200 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online pacakges</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff;
+        }
+
+        .navbar {
+            background-color: rgb(243, 88, 135);
+            color: white;
+            padding: 1rem 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            margin: auto;
+        }
+
+        .brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-container input[type="text"] {
+            padding: 0.5rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 4px;
+            margin-right: 0.5rem;
+            width: 200px;
+        }
+
+        .search-container button {
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 4px;
+            background-color: white;
+            color: #f1489d;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .pacakge-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 2rem 0;
+        }
+
+        .pacakge-item {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 300px;
+            /* Increased width */
+            margin: 1rem;
+            padding: 1.5rem;
+            /* Increased padding */
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .pacakge-item:hover {
+            transform: scale(1.05);
+        }
+
+        .pacakge-item img {
+            max-width: 100%;
+            border-radius: 4px;
+        }
+
+        .pacakge-item h3 {
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+            color: #f1489d;
+        }
+
+        .pacakge-item p {
+            font-size: 1rem;
+            color: #f1489d;
+        }
+
+        .pacakge-item .btn-cart,
+        .pacakge-item .btn-buy {
+            margin: 0.5rem;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .pacakge-item .btn-cart {
+            background-color: #f1489d;
+            color: white;
+        }
+
+        .pacakge-item .btn-buy {
+            background-color: #28a745;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    {% block content %}
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="brand">Agrikit</a>
+            welcome : {{session}}
+            <form method="POST" action="{%url 'search'%}">
+                {%csrf_token%}
+                <div class="search-container">
+                    <input type="text" id="search-input" name="searchquery" placeholder="Search pacakges...">
+                    <button type="submit" id="search-button">Search</button>
+                </div>
+            </form>
+
+
+
+
+            <ul class="nav-links">
+                <li><a href="{%url 'index' %}">Home</a></li>
+                <li><a href="{%url 'viewcart' %}">Viewcart</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="{% url 'logout' %}"><button type="submit">Logout</button></a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="pacakge-list" id="pacakge-list">
+        {% for i in probj % | dictsort:"agriagencyid.name"|unique %}
+        {% if i.status == 'APPROVED' %}
+        <div class="pacakge-item" data-name="product Name 1">
+            <img src="{{ i.image.url }}" alt="product 1" style="height: 50% ;">
+            <h3>{{ i.product_name}}</h3>
+            <p>{{ i.product_description}}</p>
+            <p>Brand: {{ i.agriagencyid.name}}</p>
+            <p>Price: {{ i.product_price }}</p>
+            <!-- <p>{{ i.pacakge_description}}</p> -->
+
+            
+            <!-- <a href="{% url 'addtocart'%}"><button type="submit"  name="productid" value="{{i.id}}" class="btn-cart">Add to Cart</button></a> -->
+            <form method="POST" action="{% url 'addtocart'%}">
+                {%csrf_token%}
+                <input type="hidden" name="productid" value="{{i.id}}">
+                <button type="submit" class="btn-buy">Book Now</button>
+            
+            <a href="{% url 'productdetail' i.pk %}"><button type="submit" class="btn-buy">Read More</button></a>
+
+            <!-- <form method="POST" action="{% url 'addtocart'%}">
+                {%csrf_token%}
+                <input type="hidden" name="prouctid" value="{{i.id}}">
+                <button type="submit" class="btn">Add to Cart</button>
+            </form> -->
+
+        </form>
+        </div>
+        {% endif %}
+        {% endfor %}
+
+        <!-- Add more pacakges as needed -->
+    </div>
+
+    <script src="scripts.js"></script>
+    {% endblock %}
+</body>
+
+</html>
